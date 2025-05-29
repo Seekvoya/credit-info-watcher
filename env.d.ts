@@ -1,12 +1,12 @@
 declare namespace NodeJS {
   type ProcessEnv = {
-    APP_PRODUCTION_CONFIG: number;
+    APP_PRODUCTION_CONFIG: string;
     APP_PORT: number;
 
     DB_HOST: string;
-    DB_PORT: number;
+    DB_PORT: string;
     DB_USER: string;
     DB_PASSWORD: string;
-    DB: string;
+    DB_MAIN: string;
   }
 }
