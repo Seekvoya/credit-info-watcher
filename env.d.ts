@@ -3,7 +3,7 @@ declare namespace NodeJS {
     APP_PRODUCTION_CONFIG: string;
     APP_PORT: number;
 
-    DB_HOST: string;
+    DB_HOST_PROD: string;
     DB_HOST_TEST: string;
     DB_PORT: string;
     DB_USER: string;

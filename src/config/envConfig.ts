@@ -6,13 +6,13 @@ class EnvConfig {
   get app() {
     return {
       port: process.env.APP_PORT,
-      procution: process.env.APP_PRODUCTION_CONFIG,
+      production: process.env.APP_PRODUCTION_CONFIG,
     };
   }
 
   get db() {
     return {
-      host: process.env.DB_HOST,
+      host: process.env.DB_HOST_TEST,
       port: parseInt(process.env.DB_PORT),
       username: process.env.DB_USER,
       password: process.env.DB_PASSWORD,
