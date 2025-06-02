@@ -16,7 +16,7 @@ const config: DataSourceOptions = {
   },
 
   logging: false,
-
+  synchronize: false,
   entities: ['dist/src/modules/**/*.entity.js'],
   migrations: ['dist/src/database/migrations/*.js'],
 };
