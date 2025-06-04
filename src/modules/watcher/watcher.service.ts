@@ -2,9 +2,11 @@ import { HttpException, HttpStatus, Injectable, Logger } from '@nestjs/common';
 import { connectionSource } from 'src/config/ormConfig';
 import { getValue } from 'src/utils/getValue';
 import { ProcessedCreditData } from './dto/watcher.dto.out';
+import { ManagerService, ProviderType } from '../manager/manager.service';
 @Injectable()
 export class WatcherService {
   private readonly logger = new Logger(WatcherService.name);
+  private readonly manager: ManagerService;
 
   public async getClientCreditInfoById(
     searchData: any,
@@ -57,7 +59,10 @@ export class WatcherService {
         this.logger.log(
           `Triggering manager method for treaty ID: ${processedData.treaty_id}`,
         );
-        // await this.triggerManagerMethod(processedData);
+        await this.manager.processCorrection(processedData, {
+          provider: ProviderType.EQUIFAX,
+          isBankrupt: false,
+        });
       }
 
       return processedData;

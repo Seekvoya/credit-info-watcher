@@ -1,13 +1,23 @@
-export interface EquifaxCorrectionBody {
-  XXXXXX: string;
-  DDDD: Date;
-  YY: CLOSURE_EVENTS | BANKRUPT_EVENTS | CESSION_EVENTS;
+export enum OperationType {
+  CORRECTION = 'correction',
+  DELETION = 'deletion',
+}
+
+export enum ProviderType {
+  EQUIFAX = 'equifax',
+  NBKI = 'nbki',
 }
 
 export interface EquifaxDeletionBody {
-  XXXXXX: string;
-  DDDD: Date;
-  YY: SCORING_DELETION_ACTION | NBKI_DELETION_ACTION;
+  treaty_id: number;
+  deleting_from: SCORING_DELETION_ACTION | NBKI_DELETION_ACTION.NBKI;
+  action: SCORING_DELETION_ACTION | NBKI_DELETION_ACTION.TREATY_AND_APPLICATION;
+  is_treaty?: NBKI_DELETION_ACTION.IS_TREATY;
+}
+
+export enum ORIGINAL_CLOSURE_EVENTS {
+  PDL = 2,
+  INSTALLMENT = 4,
 }
 
 export enum CLOSURE_EVENTS {
@@ -36,5 +46,5 @@ export enum NBKI_DELETION_ACTION {
   NBKI = 'NBKI',
   TREATY_AND_APPLICATION = 'D',
   TREATY_C56 = 'C.2',
-  DOGOVOR = 0,
+  IS_TREATY = 0,
 }
