@@ -12,7 +12,7 @@ class EnvConfig {
 
   get db() {
     return {
-      host: process.env.DB_HOST_TEST,
+      host: process.env.DB_HOST_PROD,
       port: parseInt(process.env.DB_PORT),
       username: process.env.DB_USER,
       password: process.env.DB_PASSWORD,
