@@ -9,7 +9,7 @@ import {
   ProviderType,
   SCORING_DELETION_ACTION,
 } from './dto/manager.dto.in';
-import { DataSource } from 'typeorm';
+import { connectionSource } from 'src/config/ormConfig';
 
 // ===== REQUEST BUILDERS =====
 interface IEquifaxRequestBuilder {
@@ -86,10 +86,8 @@ type OperationOptions = CorrectionOptions | DeletionOptions;
 // ===== REPOSITORY PATTERN =====
 @Injectable()
 export class EquifaxRepository {
-  constructor(private dataSource: DataSource) {}
-
   async insertDeletion(data: EquifaxDeletionBody): Promise<void> {
-    await this.dataSource
+    await connectionSource
       .createQueryBuilder()
       .insert()
       .into('api_bki_deleting')
@@ -103,7 +101,7 @@ export class EquifaxRepository {
   }
 
   async insertCorrection(data: Partial<ProcessedCreditData>): Promise<void> {
-    await this.dataSource
+    await connectionSource
       .createQueryBuilder()
       .insert()
       .into('equifax_dogovor')

@@ -98,6 +98,6 @@ export class WatcherService {
       treaty_date_end: rawData.D_DATE_END,
       treaty_client_id: rawData.ID_CLIENT,
       treaty_event_status: rawData.ID_STATUS,
-    };
+    } as ProcessedCreditData;
   }
 }
