@@ -18,9 +18,11 @@ $ yarn run start:dev
 # production mode
 $ yarn run start:prod
 ```
-## Manager Class Diagram
-ManagerService Architecture
+
+## ManagerService Architecture
 🏗️ Архитектурная схема
+
+mermaid
 graph TB
     %% CLIENT LAYER
     Client[📱 Client Request] --> Controller[🎯 Controller Layer]
@@ -78,6 +80,8 @@ graph TB
     class CQ,DQ,CO,DO dataClass
     class IRB interfaceClass
 🔄 Последовательность взаимодействий
+
+mermaid
 sequenceDiagram
     participant C as 📱 Client
     participant MS as 🏗️ ManagerService
@@ -143,4 +147,3 @@ sequenceDiagram
         MS->>L: 📝 Log error
         MS-->>C: ❌ Internal Server Error
     end
-```

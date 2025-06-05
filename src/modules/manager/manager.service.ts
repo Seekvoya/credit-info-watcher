@@ -26,6 +26,12 @@ export class EquifaxCorrectionBuilder implements IEquifaxRequestBuilder {
         : CLOSURE_EVENTS.PDL;
     }
 
+    if (data.treaty_event_status === ORIGINAL_CLOSURE_EVENTS.INSTALLMENT) {
+      query.treaty_event_status = options.isBankrupt
+        ? BANKRUPT_EVENTS.INSTALLMENT
+        : BANKRUPT_EVENTS.INSTALLMENT;
+    }
+
     return query;
   }
 }
@@ -97,10 +103,16 @@ export class EquifaxRepository {
   }
 
   async insertCorrection(data: Partial<ProcessedCreditData>): Promise<void> {
-    if (!data) {
-      return;
-    }
-    return;
+    await this.dataSource
+      .createQueryBuilder()
+      .insert()
+      .into('equifax_dogovor')
+      .values({
+        ID_DOG: data.treaty_id,
+        date: data.treaty_date_end,
+        event: data.treaty_event_status,
+      })
+      .execute();
   }
 }
 // ===== MAIN SERVICE =====

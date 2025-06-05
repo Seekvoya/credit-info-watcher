@@ -11,8 +11,16 @@ export enum ProviderType {
 export interface EquifaxDeletionBody {
   treaty_id: number;
   deleting_from: SCORING_DELETION_ACTION | NBKI_DELETION_ACTION.NBKI;
-  action: SCORING_DELETION_ACTION | NBKI_DELETION_ACTION.TREATY_AND_APPLICATION;
+  action:
+    | SCORING_DELETION_ACTION
+    | NBKI_DELETION_ACTION.TREATY_AND_APPLICATION
+    | CLOSURE_EVENTS
+    | BANKRUPT_EVENTS;
   is_treaty?: NBKI_DELETION_ACTION.IS_TREATY;
+}
+
+export interface EquifaxCorrectionBody extends EquifaxDeletionBody {
+  treaty_date_end: Date;
 }
 
 export enum ORIGINAL_CLOSURE_EVENTS {
