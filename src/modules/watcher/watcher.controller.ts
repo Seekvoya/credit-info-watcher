@@ -6,7 +6,7 @@ export class WatcherController {
   constructor(private readonly watcher: WatcherService) {}
 
   @Get()
-  async getClientCredinInfoByUID(@Query() query: string) {
-    return await this.watcher.getClientCredinInfoByUID(query);
+  async getClientCreditInfoByUID(@Query() searchParam: number, bool?: boolean) {
+    return this.watcher.getClientCreditInfoById(searchParam, bool);
   }
 }
