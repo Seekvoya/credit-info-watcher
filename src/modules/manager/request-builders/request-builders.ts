@@ -31,7 +31,7 @@ export class EquifaxCorrectionBuilder implements IEquifaxRequestBuilder {
     if (data.treaty_event_status === ORIGINAL_CLOSURE_EVENTS.INSTALLMENT) {
       query.treaty_event_status = options.isBankrupt
         ? BANKRUPT_EVENTS.INSTALLMENT
-        : BANKRUPT_EVENTS.INSTALLMENT;
+        : CLOSURE_EVENTS.INSTALLMENT;
     }
 
     return query;
